@@ -21,8 +21,10 @@ jobs:
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Build with Maven
+    - name: Generate BOM
       run: ${GITHUB_WORKSPACE}/sl bom generate --java .
+    - name: Check generated BOM
+      run: head bom.xml
     - name: ShiftLeft Analyze
       run:  ${GITHUB_WORKSPACE}/sl analyze --wait --sca --bomupload bom.xml --java --app jvl-bom-sca --force --cpg target/JavaVulnerableLab.war
     env:
