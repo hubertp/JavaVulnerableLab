@@ -22,7 +22,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Build with Maven
-      run: ${GITHUB_WORKSPACE}/sl bom generate --java
+      run: ${GITHUB_WORKSPACE}/sl bom generate --java .
     - name: ShiftLeft Analyze
       run:  ${GITHUB_WORKSPACE}/sl analyze --wait --sca --bomupload bom.xml --java --app jvl-bom-sca --force --cpg target/JavaVulnerableLab.war
     env:
