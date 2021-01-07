@@ -25,6 +25,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: ShiftLeft Analyze
-      run:  ${GITHUB_WORKSPACE}/sl analyze --wait --sca --sca-project-dir ${GITHUB_WORKSPACE} --java --cpg target/JavaVulnerableLab.war
+      run:  ${GITHUB_WORKSPACE}/sl analyze --wait --sca --sca-project-dir ${GITHUB_WORKSPACE} --java --app jvl-sca --force --cpg target/JavaVulnerableLab.war
     env:
       SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
